@@ -5,8 +5,17 @@ export class QuotesService{
     quote : Quote[] = [];
 
     addQuoteToFavourites(quoteToBeSaved : Quote){
-        this.quote.push(quoteToBeSaved);
+        var isAvailable:boolean = false;
+        for(let i=0;i<this.quote.length;i++){
+            if(this.quote[i].id == quoteToBeSaved.id){
+                isAvailable = true;
+            }
+        }
+        if(!isAvailable){
+            this.quote.push(quoteToBeSaved);
+        }
         console.log(this.quote);
+        
     }
 
     removeQuoteFromFavourites(quoteToBeRemoved : Quote){
