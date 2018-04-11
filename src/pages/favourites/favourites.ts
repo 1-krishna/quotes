@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { QuotesService } from '../../services/quotes';
 import { Quote } from '../../data/quote.interface';
+import { QuotePage } from '../quote/quote';
 
 /**
  * Generated class for the FavouritesPage page.
@@ -17,7 +18,8 @@ import { Quote } from '../../data/quote.interface';
 })
 export class FavouritesPage implements OnInit{
   quote : Quote[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private quoteService: QuotesService){
+  constructor(public navCtrl: NavController, public navParams: NavParams, private quoteService: QuotesService,
+  private modalCtrl: ModalController){
     this.quote = quoteService.getFavouritesQuotes();
   }
 
@@ -25,8 +27,8 @@ export class FavouritesPage implements OnInit{
 
   }
 
-  removeConfirm(quoteToBeDeleted: Quote){
-    this.quoteService.removeQuoteFromFavourites(quoteToBeDeleted);
+  openModal(quoteToBeShown: Quote){
+    this.modalCtrl.create(QuotePage, quoteToBeShown).present();
   }
 
   ionViewDidLoad() {

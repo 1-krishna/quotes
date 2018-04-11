@@ -14,23 +14,12 @@
 
 
 <ion-content padding>
-    <ion-card *ngFor="let quo of quote let i=index">
-        <ion-card-content >
-          <ion-card-title>
-           {{quote[i].person}}
-          </ion-card-title>
-          <p>
-           {{quote[i].text}}
-          </p>
-    
-          <ion-row>
-            <ion-col col-12 text-right >
-              <button ion-button small clear icon-right (click)="removeConfirm(quote[i])">
-                Remove
-                <ion-icon name="star"></ion-icon>
-              </button>
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-card>
+  <ion-list *ngFor="let quo of quote">
+    <ion-card>
+      <button ion-button (click)="openModal(quo)" clear>
+        {{quo.text}}
+      </button>
+    </ion-card>
+  </ion-list>
+  
 </ion-content>
