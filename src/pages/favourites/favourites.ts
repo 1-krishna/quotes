@@ -35,4 +35,8 @@ export class FavouritesPage implements OnInit{
     console.log('ionViewDidLoad FavouritesPage');
   }
 
+  removeThisQuote(quoteToBeDeleted: Quote){
+    this.quoteService.removeQuoteFromFavourites(quoteToBeDeleted);
+  }
+
 }

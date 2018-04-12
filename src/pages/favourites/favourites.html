@@ -5,21 +5,30 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
+    <button ion-button menuToggle color="danger">
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>favourites</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <ion-list *ngFor="let quo of quote">
-    <ion-card>
-      <button ion-button (click)="openModal(quo)" clear>
-        {{quo.text}}
-      </button>
-    </ion-card>
+    <ion-item-sliding>
+        <ion-item (click)="openModal(quo)">
+            <button ion-button clear>
+              {{quo.text}}
+            </button>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="danger" (click)="removeThisQuote(quo)">
+            <ion-icon name="trash"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>  
+    </ion-item-sliding> 
   </ion-list>
   
 </ion-content>
