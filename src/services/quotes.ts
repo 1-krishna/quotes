@@ -34,4 +34,13 @@ export class QuotesService{
     getFavouritesQuotes(){
         return this.quote;
     }
+
+    isMadeFavourite(quoteToBeChecked: Quote){
+        for(let i=0;i<this.quote.length;i++){
+            if(quoteToBeChecked == this.quote[i]){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -15,20 +15,25 @@
 
 <ion-content padding>
   <ion-card *ngFor="let quoteToBeShown of quotesToBeShown; let i=index">
-    <ion-card-content >
+    <ion-card-content>
       <ion-card-title>
-       <!-- {{quoteToBeShown.person}} -->
-       {{quotesToBeShown[i].person}}
+        <!-- {{quoteToBeShown.person}} -->
+        {{quotesToBeShown[i].person}}
       </ion-card-title>
       <p>
-       <!-- {{quoteToBeShown.text}} -->
-       {{quotesToBeShown[i].text}}
+        <!-- {{quoteToBeShown.text}} -->
+        {{quotesToBeShown[i].text}}
       </p>
 
       <ion-row>
-        <ion-col col-12 text-right >
-          <button ion-button small clear icon-right (click)="showConfirm(quotesToBeShown[i])">
+        <ion-col col-12 text-right>
+          <button *ngIf="!isAlreadyFav(quotesToBeShown[i])" ion-button small clear icon-right (click)="showConfirm(quotesToBeShown[i])">
             Favourite
+            <ion-icon name="star"></ion-icon>
+          </button>
+          <button *ngIf="isAlreadyFav(quotesToBeShown[i])" ion-button small clear icon-right (click)="showConfirm(quotesToBeShown[i])"
+            color="danger">
+            Unfavourite
             <ion-icon name="star"></ion-icon>
           </button>
         </ion-col>

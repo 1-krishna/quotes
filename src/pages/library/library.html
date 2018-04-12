@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle color="danger">
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>library</ion-title>
   </ion-navbar>
 
@@ -16,8 +19,8 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let quote of quotesCollection" (click)="loadThisCategory(quote.category)">
-      <ion-icon [name]="quote.icon" item-start ></ion-icon>
-        {{quote.category}}
+      <ion-icon [name]="quote.icon" item-start></ion-icon>
+      {{quote.category}}
       <!--<ion-icon name="rose" item-end></ion-icon>-->
       <p>{{quote.quotes.length}} Quotes</p>
     </ion-item>
